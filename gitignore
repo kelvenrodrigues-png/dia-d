@@ -1,0 +1,24 @@
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Configurações de editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Variáveis de ambiente e segredos (nunca commitar!)
+.env
+.env.local
+*.key
+*.pem
+
+# Dependências (caso venham a usar Node no futuro)
+node_modules/
+
+# Arquivos de build/log
+*.log
+dist/
+build/
+*.exe

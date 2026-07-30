@@ -1,0 +1,415 @@
+/* =========================================================
+   style.css — Identidade visual inspirada na NASA
+   Cores oficiais: Azul #0B3D91 · Vermelho #FC3D21 · Branco
+   Fonte: Public Sans (usada no NASA Web Design System)
+   ========================================================= */
+
+:root{
+  --nasa-blue:#0B3D91;
+  --nasa-blue-dark:#061A3F;
+  --nasa-red:#FC3D21;
+  --nasa-green:#1E8E5A;
+  --white:#FFFFFF;
+  --gray-100:#F4F6F8;
+  --gray-200:#E4E8EE;
+  --gray-700:#3D4551;
+  --gray-900:#151A21;
+  --shadow-sm:0 2px 6px rgba(11,61,145,.06);
+  --shadow-md:0 12px 30px rgba(6,26,63,.14);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Public Sans', Arial, Helvetica, sans-serif;
+  color:var(--gray-900);
+  background:var(--white);
+  line-height:1.6;
+}
+img{max-width:100%;display:block;}
+a{color:var(--nasa-blue);}
+::selection{background:var(--nasa-red);color:var(--white);}
+
+/* ---------- barra utilitária ---------- */
+.util-bar{
+  background:var(--gray-900);
+  color:#c8ced8;
+  font-size:.78rem;
+}
+.util-inner{
+  max-width:1200px;margin:0 auto;
+  padding:.45rem 1.5rem;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4rem;
+}
+
+/* ---------- cabeçalho ---------- */
+.site-header{background:var(--white);position:sticky;top:0;z-index:50;box-shadow:0 1px 0 var(--gray-200);}
+.header-inner{
+  max-width:1200px;margin:0 auto;
+  padding:.9rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+}
+.wordmark{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--gray-900);}
+.badge{
+  background:var(--nasa-blue);
+  color:var(--white);
+  font-weight:800;
+  font-size:.85rem;
+  letter-spacing:.06em;
+  padding:.5rem .7rem;
+  border-radius:50%;
+  border:3px solid var(--nasa-red);
+  line-height:1;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2.6rem;height:2.6rem;
+}
+.wordmark-text{font-weight:700;font-size:1.05rem;line-height:1.2;}
+.wordmark-text small{font-weight:500;color:var(--gray-700);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;}
+
+.main-nav{display:flex;gap:1.8rem;}
+.main-nav a{
+  text-decoration:none;color:var(--gray-900);
+  font-weight:600;font-size:.92rem;
+  padding:.3rem 0;
+  border-bottom:2px solid transparent;
+  transition:border-color .2s, color .2s;
+}
+.main-nav a:hover{border-color:var(--nasa-red);color:var(--nasa-blue);}
+.nav-toggle{
+  display:none;background:var(--nasa-blue);color:var(--white);border:none;
+  padding:.5rem .8rem;font-weight:700;font-size:.8rem;border-radius:4px;cursor:pointer;
+}
+.red-rule{height:4px;background:linear-gradient(90deg, var(--nasa-red), #ff7a5c, var(--nasa-red));}
+
+@media(max-width:840px){
+  .main-nav{
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    background:var(--nasa-blue-dark);
+    flex-direction:column;justify-content:center;align-items:center;gap:2rem;
+    transform:translateX(100%);transition:transform .35s ease;
+    z-index:60;
+  }
+  .main-nav.open{transform:translateX(0);}
+  .main-nav a{color:var(--white);font-size:1.3rem;}
+  .nav-toggle{display:block;}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;color:var(--white);overflow:hidden;}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(10%) contrast(1.05);}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(6,26,63,.55) 0%, rgba(6,26,63,.75) 55%, rgba(6,26,63,.96) 100%);
+}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:3rem 1.5rem 3.4rem;width:100%;}
+.breadcrumb{font-size:.8rem;color:#c9d6ee;margin-bottom:.9rem;font-weight:500;}
+.hero h1{font-size:clamp(2.2rem,5.2vw,3.6rem);font-weight:800;letter-spacing:-.01em;border-left:5px solid var(--nasa-red);padding-left:1rem;margin-bottom:1rem;}
+.hero-sub{max-width:56ch;font-size:1.08rem;color:#e5ebf7;margin-bottom:2rem;}
+.hero-facts{display:flex;gap:2.2rem;flex-wrap:wrap;}
+.hero-facts div{border-top:2px solid var(--nasa-red);padding-top:.5rem;min-width:120px;}
+.hero-facts strong{display:block;font-size:1.3rem;font-weight:800;}
+.hero-facts span{font-size:.78rem;color:#c9d6ee;}
+
+/* ---------- tiras de tags ---------- */
+.breadcrumb-strip{
+  background:var(--gray-100);
+  border-bottom:1px solid var(--gray-200);
+  display:flex;gap:.6rem;flex-wrap:wrap;
+  padding:.9rem 1.5rem;
+  max-width:1200px;margin:0 auto;
+}
+.tag-pill{
+  background:var(--white);border:1px solid var(--gray-200);
+  color:var(--nasa-blue);font-size:.76rem;font-weight:600;
+  padding:.35rem .8rem;border-radius:999px;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+}
+.tag-pill:hover{border-color:var(--nasa-blue);box-shadow:var(--shadow-sm);}
+
+/* tags agora são links (<a>) — mantém o visual de pill e adiciona feedback de clique/foco */
+a.tag-pill{
+  display:inline-block;
+  text-decoration:none;
+  cursor:pointer;
+}
+a.tag-pill:hover{
+  background:var(--nasa-blue);
+  color:var(--white);
+}
+a.tag-pill:focus-visible{
+  outline:2px solid var(--nasa-blue);
+  outline-offset:2px;
+}
+
+/* ---------- seções ---------- */
+.section{padding:5rem 1.5rem;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-alt{background:var(--gray-100);}
+.section-navy{background:var(--nasa-blue-dark);color:var(--white);}
+
+.eyebrow{
+  display:inline-block;color:var(--nasa-red);font-weight:800;
+  font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:.7rem;
+}
+.eyebrow-light{color:#7fa3e8;}
+h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:1.4rem;}
+h2.light{color:var(--white);}
+.section-lede{max-width:65ch;color:var(--gray-700);margin-bottom:2.6rem;}
+.section-navy .section-lede{color:#c9d6ee;}
+
+.two-col{display:grid;grid-template-columns:0.9fr 1.1fr;gap:3.2rem;align-items:start;}
+@media(max-width:880px){.two-col{grid-template-columns:1fr;}}
+
+.framed-photo{border:1px solid var(--gray-200);padding:8px;background:var(--white);box-shadow:var(--shadow-sm);}
+.framed-photo figcaption{
+  font-size:.78rem;color:var(--gray-700);margin-top:.6rem;padding:0 .2rem;
+}
+
+.col-text p{margin-bottom:1.1rem;color:var(--gray-700);font-size:1.02rem;}
+.callout{
+  background:var(--gray-100);
+  border-left:4px solid var(--nasa-blue);
+  padding:1.1rem 1.3rem;
+  margin:1.4rem 0;
+  font-size:.95rem;
+  color:var(--gray-900);
+}
+
+/* ---------- linha do tempo ---------- */
+.timeline{position:relative;padding-left:2.6rem;margin-top:1rem;}
+.timeline-track{
+  position:absolute;left:8px;top:0;bottom:0;width:4px;
+  background:var(--gray-200);border-radius:2px;
+}
+.timeline-fill{
+  position:absolute;left:0;top:0;width:100%;height:0%;
+  background:var(--nasa-blue);border-radius:2px;
+  transition:height .1s linear;
+}
+.tl-item{position:relative;padding-bottom:2.6rem;max-width:760px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{
+  content:"";position:absolute;left:-2.6rem;top:.2rem;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--white);border:3px solid var(--nasa-blue);
+}
+.tl-item.is-milestone::before{background:var(--nasa-red);border-color:var(--nasa-red);box-shadow:0 0 0 5px rgba(252,61,33,0.15);}
+.tl-year{
+  display:inline-block;font-weight:800;color:var(--nasa-blue);
+  font-size:.85rem;letter-spacing:.04em;margin-bottom:.3rem;
+}
+.tl-body h3{font-size:1.15rem;font-weight:700;margin-bottom:.35rem;}
+.tl-body p{color:var(--gray-700);font-size:.96rem;max-width:58ch;}
+
+/* deslocamento para que âncoras não fiquem escondidas atrás do header fixo */
+.tl-item[id]{scroll-margin-top:6rem;}
+
+/* ---------- cards de importância ---------- */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;}
+.info-card{
+  border:1px solid var(--gray-200);
+  border-top:4px solid var(--nasa-red);
+  padding:1.8rem 1.5rem;
+  background:var(--white);
+  border-radius:6px;
+  transition:box-shadow .25s ease, transform .25s ease;
+}
+.info-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.card-number{font-weight:800;color:var(--gray-200);font-size:1.6rem;display:block;margin-bottom:.6rem;}
+.info-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.6rem;}
+.info-card p{font-size:.92rem;color:var(--gray-700);}
+
+/* deslocamento para que âncoras não fiquem escondidas atrás do header fixo */
+.info-card[id]{scroll-margin-top:6rem;}
+
+/* ---------- legado ---------- */
+.legacy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;margin-top:1rem;}
+@media(max-width:880px){.legacy-grid{grid-template-columns:1fr;}}
+.legacy-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.15);border-radius:6px;overflow:hidden;}
+.legacy-card img{width:100%;}
+.legacy-card figcaption{padding:1.2rem 1.4rem 1.5rem;}
+.legacy-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--white);}
+.legacy-card p{font-size:.9rem;color:#c9d6ee;}
+
+.stat-strip{
+  margin-top:2.6rem;display:flex;gap:2.2rem;flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.2);padding-top:2rem;
+}
+.stat-strip div{min-width:180px;flex:1;}
+.stat-strip strong{display:block;font-size:2rem;font-weight:800;color:var(--nasa-red);}
+.stat-strip span{font-size:.82rem;color:#c9d6ee;}
+
+/* ---------- citação ---------- */
+.quote-section{padding:6rem 1.5rem;text-align:center;background:var(--gray-100);}
+.quote-section blockquote{
+  max-width:760px;margin:0 auto;font-size:clamp(1.2rem,2.6vw,1.7rem);
+  font-weight:600;color:var(--gray-900);line-height:1.5;
+}
+.quote-section cite{display:block;margin-top:1.4rem;font-style:normal;color:var(--nasa-blue);font-weight:700;font-size:.9rem;}
+
+/* ---------- rodapé ---------- */
+.site-footer{background:var(--gray-900);color:#c8ced8;}
+.footer-inner{
+  max-width:1200px;margin:0 auto;display:flex;gap:3rem;flex-wrap:wrap;justify-content:space-between;
+  padding:3rem 1.5rem 2.4rem;
+}
+.footer-inner .badge{margin-bottom:.8rem;}
+.footer-inner p{font-size:.85rem;max-width:38ch;}
+.footer-inner h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--white);margin-bottom:.6rem;}
+.footer-inner a{color:#8fb2ee;}
+
+.credits-strip{border-top:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);}
+.credits-inner{
+  max-width:1200px;margin:0 auto;padding:1.2rem 1.5rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;
+}
+.credits-institution{font-size:.8rem;font-weight:700;color:var(--white);letter-spacing:.02em;}
+.credits-devs{font-size:.8rem;color:#9aa4b5;}
+
+@media(max-width:600px){
+  .credits-inner{flex-direction:column;text-align:center;gap:.3rem;}
+}
+
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* =========================================================
+   QUIZ — versão mais rica visualmente
+   ========================================================= */
+.quiz-box{
+  max-width:680px;
+  background:var(--white);
+  border:1px solid var(--gray-200);
+  border-radius:10px;
+  box-shadow:var(--shadow-md);
+  overflow:hidden;
+  position:relative;
+}
+.quiz-box::before{
+  content:"";display:block;height:5px;
+  background:linear-gradient(90deg, var(--nasa-blue), var(--nasa-red));
+}
+.quiz-panel{padding:2.4rem 2.2rem;}
+
+.quiz-panel-start{text-align:center;}
+.quiz-badge{
+  display:inline-block;background:var(--gray-100);color:var(--nasa-blue);
+  font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:.4rem .9rem;border-radius:999px;margin-bottom:1.1rem;
+}
+.quiz-intro{color:var(--gray-700);margin-bottom:1.6rem;font-size:1.02rem;}
+
+.btn-primary{
+  background:var(--nasa-blue);
+  color:var(--white);
+  border:none;
+  font-family:'Public Sans', Arial, sans-serif;
+  font-weight:700;
+  font-size:.92rem;
+  padding:.8rem 1.7rem;
+  border-radius:6px;
+  cursor:pointer;
+  transition:background .2s, transform .15s, box-shadow .2s;
+}
+.btn-primary:hover{background:var(--nasa-blue-dark);box-shadow:0 6px 16px rgba(11,61,145,.28);transform:translateY(-1px);}
+.btn-primary:active{transform:translateY(0);}
+
+.quiz-progress{margin-bottom:1.6rem;}
+.quiz-progress-track{
+  height:8px;background:var(--gray-200);border-radius:999px;overflow:hidden;margin-bottom:.6rem;
+}
+.quiz-progress-fill{
+  height:100%;background:linear-gradient(90deg, var(--nasa-blue), #3a63c4);border-radius:999px;width:0%;
+  transition:width .35s ease;
+}
+.quiz-progress-meta{display:flex;justify-content:space-between;align-items:center;}
+.quiz-progress span, #quizProgressLabel{font-size:.78rem;color:var(--gray-700);font-weight:600;}
+.quiz-score{
+  font-size:.74rem;font-weight:700;color:var(--nasa-blue);
+  background:var(--gray-100);padding:.25rem .6rem;border-radius:999px;
+}
+
+#quizQuestionText{font-size:1.2rem;font-weight:700;margin-bottom:1.3rem;line-height:1.4;}
+
+.quiz-options{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.1rem;}
+.quiz-option{
+  position:relative;
+  display:flex;align-items:center;gap:.9rem;
+  text-align:left;
+  background:var(--white);
+  border:1.5px solid var(--gray-200);
+  padding:.85rem 1.1rem;
+  border-radius:8px;
+  font-family:'Public Sans', Arial, sans-serif;
+  font-size:.95rem;
+  color:var(--gray-900);
+  cursor:pointer;
+  transition:border-color .2s, background .2s, transform .15s;
+}
+.quiz-option::before{
+  content:attr(data-letter);
+  display:inline-flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  width:26px;height:26px;border-radius:50%;
+  background:var(--gray-100);color:var(--gray-700);
+  font-size:.76rem;font-weight:800;
+  transition:background .2s, color .2s;
+}
+.quiz-option:hover:not(:disabled){border-color:var(--nasa-blue);background:var(--gray-100);transform:translateX(2px);}
+.quiz-option:disabled{cursor:default;}
+.quiz-option.correct{
+  border-color:var(--nasa-green);
+  background:rgba(30,142,90,.08);
+  font-weight:700;
+}
+.quiz-option.correct::before{background:var(--nasa-green);color:var(--white);content:"✓";}
+.quiz-option.incorrect{
+  border-color:var(--nasa-red);
+  background:rgba(252,61,33,.08);
+  font-weight:700;
+}
+.quiz-option.incorrect::before{background:var(--nasa-red);color:var(--white);content:"✕";}
+
+.quiz-explanation{
+  background:var(--gray-100);
+  border-left:4px solid var(--nasa-blue);
+  padding:1rem 1.2rem;
+  border-radius:0 6px 6px 0;
+  font-size:.9rem;
+  color:var(--gray-900);
+  margin-bottom:1.3rem;
+  animation:fadein .3s ease;
+}
+
+@keyframes fadein{
+  from{opacity:0;transform:translateY(-4px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ---- tela de resultado ---- */
+.quiz-panel-result{text-align:center;}
+.quiz-score-ring{position:relative;width:120px;height:120px;margin:0 auto 1.3rem;}
+.quiz-score-ring svg{width:100%;height:100%;transform:rotate(-90deg);}
+.ring-track{fill:none;stroke:var(--gray-200);stroke-width:10;}
+.ring-fill{
+  fill:none;stroke:var(--nasa-blue);stroke-width:10;stroke-linecap:round;
+  stroke-dasharray:327;stroke-dashoffset:327;
+  transition:stroke-dashoffset .8s ease;
+}
+.ring-label{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;font-weight:800;color:var(--nasa-blue);
+}
+#quizResultTitle{font-size:1.3rem;font-weight:800;margin-bottom:.6rem;}
+#quizResultText{color:var(--gray-700);margin-bottom:1.6rem;max-width:44ch;margin-left:auto;margin-right:auto;}
+
+@media(max-width:600px){
+  .quiz-panel{padding:1.8rem 1.4rem;}
+}
